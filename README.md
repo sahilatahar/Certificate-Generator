@@ -1,6 +1,6 @@
 <h1 align='center' >Har Ghar Tiranga Certificate Generator</h1>
 
-[![harghar-tiranga-image](https://github.com/sahilatahar/Har-Ghar-Tiranga-Certificate-Generator/assets/100127570/1169bf05-f3aa-440a-914e-2aa2e4c18be3)]()
+[![harghar-tiranga-image](https://github.com/sahilatahar/Har-Ghar-Tiranga-Certificate-Generator/assets/100127570/3c32e454-1425-4fdf-80f3-5c9d60838f58)]()
 
 The **Har Ghar Tiranga Certificate Generator** is a web application built to generate a clone of the government's official "Har Ghar Tiranga Certificate." This project was created to practice frontend development skills, utilizing technologies like React, SCSS, and react-pdf.
 
