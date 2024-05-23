@@ -3,6 +3,7 @@ import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { isAfter, isBefore } from "validator"
 import PdfComponent from "./components/PdfComponent"
+import Footer from "./components/footer"
 
 function App() {
 	const [formData, setFormData] = useState({
@@ -68,86 +69,89 @@ function App() {
 	}
 
 	return (
-		<main className="lg:w-5/6 xl:w-2/3 flex items-center justify-center gap-8 flex-col pt-14 pb-7 px-4 mx-auto">
-			<Toaster position="top-right" />
-			<header className="space-y-2">
-				<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sand-900 text-center">
-					Certificate Generator
-				</h1>
-				<p className="text-center">
-					Generate your own <b>CodeSoft</b> certificate by filling out
-					the form below.
-				</p>
-			</header>
-			<main className="space-y-2 w-full">
-				<div className="flex gap-2 w-full flex-col sm:flex-row">
-					<div className="input-group">
-						<label htmlFor="name">Full Name</label>
-						<input
-							type="text"
-							placeholder="Enter your name"
-							name="name"
-							value={formData.name}
-							onChange={handleOnChange}
-							id="name"
-							className="input"
-						/>
+		<div className="min-h-screen flex flex-col">
+			<main className="lg:w-5/6 xl:w-2/3 flex items-center gap-8 flex-col px-4 mx-auto justify-center flex-grow">
+				<Toaster position="top-right" />
+				<header className="space-y-2 pt-8">
+					<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sand-900 text-center">
+						Certificate Generator
+					</h1>
+					<p className="text-center">
+						Generate your own <b>CodeSoft</b> certificate by filling
+						out the form below.
+					</p>
+				</header>
+				<main className="space-y-2 w-full">
+					<div className="flex gap-2 w-full flex-col sm:flex-row">
+						<div className="input-group">
+							<label htmlFor="name">Full Name</label>
+							<input
+								type="text"
+								placeholder="Enter your name"
+								name="name"
+								value={formData.name}
+								onChange={handleOnChange}
+								id="name"
+								className="input"
+							/>
+						</div>
+						<div className="input-group">
+							<label htmlFor="field">
+								Field (e.g. Web Development)
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your field"
+								name="field"
+								value={formData.field}
+								onChange={handleOnChange}
+								id="field"
+								className="input"
+							/>
+						</div>
+					</div>
+					<div className="flex gap-2 w-full flex-col sm:flex-row">
+						<div className="input-group">
+							<label htmlFor="startingDate">Starting Date</label>
+							<input
+								type="date"
+								name="startingDate"
+								onChange={handleDateChange}
+								id="startingDate"
+								className="input"
+							/>
+						</div>
+						<div className="input-group">
+							<label htmlFor="endingDate">Ending Date</label>
+							<input
+								type="date"
+								name="endingDate"
+								onChange={handleDateChange}
+								id="endingDate"
+								className="input"
+							/>
+						</div>
 					</div>
 					<div className="input-group">
-						<label htmlFor="field">
-							Field (e.g. Web Development)
-						</label>
-						<input
-							type="text"
-							placeholder="Enter your field"
-							name="field"
-							value={formData.field}
-							onChange={handleOnChange}
-							id="field"
-							className="input"
-						/>
-					</div>
-				</div>
-				<div className="flex gap-2 w-full flex-col sm:flex-row">
-					<div className="input-group">
-						<label htmlFor="startingDate">Starting Date</label>
+						<label htmlFor="issueDate">Issue Date</label>
 						<input
 							type="date"
-							name="startingDate"
+							name="issueDate"
 							onChange={handleDateChange}
-							id="startingDate"
+							id="issueDate"
 							className="input"
 						/>
 					</div>
-					<div className="input-group">
-						<label htmlFor="endingDate">Ending Date</label>
-						<input
-							type="date"
-							name="endingDate"
-							onChange={handleDateChange}
-							id="endingDate"
-							className="input"
-						/>
-					</div>
-				</div>
-				<div className="input-group">
-					<label htmlFor="issueDate">Issue Date</label>
-					<input
-						type="date"
-						name="issueDate"
-						onChange={handleDateChange}
-						id="issueDate"
-						className="input"
-					/>
-				</div>
+				</main>
+				<button
+					className="bg-sand-700 text-white rounded-md p-3 w-full font-semibold text-lg"
+					onClick={handleGenerate}
+				>
+					Generate Certificate
+				</button>
 			</main>
-			<button
-				className="bg-sand-700 text-white rounded-md p-3 w-full font-semibold text-lg"
-				onClick={handleGenerate}
-			>
-				Generate Certificate
-			</button>
-		</main>
+			<Footer />
+		</div>
 	)
 }
 
