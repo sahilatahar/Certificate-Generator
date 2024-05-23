@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	background-color: #f7f7f7;
+}
+
+@layer base {
+	.input-group {
+		@apply w-full flex flex-col gap-1;
+	}
+
+	.input {
+		@apply border border-sand-300 rounded-md p-3 w-full;
+	}
+}
