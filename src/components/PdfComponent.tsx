@@ -6,11 +6,11 @@ import {
 	Text,
 	Font,
 } from "@react-pdf/renderer"
-import PropType from "prop-types"
-import certificateImg from "../assets/certificate.jpg"
 import { isoToDDMMYYYY } from "../utils/date"
+import certificateImg from "../assets/certificate.jpg"
 import lora from "../assets/fonts/lora/Lora-Regular.ttf"
 import loraBold from "../assets/fonts/lora/Lora-Bold.ttf"
+import { FormData } from "../types/app"
 
 Font.register({
 	family: "Lora",
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 })
 
 // Create Document Component
-const PdfComponent = ({ formData }) => {
+const PdfComponent = ({ formData }: { formData: FormData }) => {
 	const { name, field, startingDate, endingDate, issueDate } = formData
 	const date = `${isoToDDMMYYYY(startingDate)} to ${isoToDDMMYYYY(
 		endingDate
@@ -89,10 +89,6 @@ const PdfComponent = ({ formData }) => {
 			</Page>
 		</Document>
 	)
-}
-
-PdfComponent.propTypes = {
-	formData: PropType.object.isRequired,
 }
 
 export default PdfComponent

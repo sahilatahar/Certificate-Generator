@@ -1,12 +1,13 @@
 import { pdf } from "@react-pdf/renderer"
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 import { isAfter, isBefore } from "validator"
 import PdfComponent from "./components/PdfComponent"
-import Footer from "./components/footer"
+import Footer from "./components/Footer"
+import { FormData } from "./types/app"
 
 function App() {
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<FormData>({
 		name: "",
 		field: "",
 		startingDate: "",
@@ -14,12 +15,12 @@ function App() {
 		issueDate: "",
 	})
 
-	const handleOnChange = (e) => {
+	const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
 		setFormData({ ...formData, [name]: value })
 	}
 
-	const handleDateChange = (e) => {
+	const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
 		setFormData({ ...formData, [name]: value })
 	}
@@ -60,8 +61,7 @@ function App() {
 		return true
 	}
 
-	const handleGenerate = async (e) => {
-		e.preventDefault()
+	const handleGenerate = async () => {
 		if (!validateForm()) return
 		const blob = await pdf(<PdfComponent formData={formData} />).toBlob()
 		const url = URL.createObjectURL(blob)
@@ -72,7 +72,7 @@ function App() {
 		<div className="min-h-screen flex flex-col">
 			<main className="lg:w-5/6 xl:w-2/3 flex items-center gap-8 flex-col px-4 mx-auto justify-center flex-grow">
 				<Toaster position="top-right" />
-				<header className="space-y-2 pt-8">
+				<header className="space-y-2 pt-12 md:pt-8">
 					<h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-sand-900 text-center">
 						Certificate Generator
 					</h1>

@@ -1,4 +1,4 @@
-function isoToDDMMYYYY(isoString) {
+function isoToDDMMYYYY(isoString: Date | string): string {
 	// Parse the ISO string to a Date object
 	const date = new Date(isoString)
 
